@@ -1,0 +1,21 @@
+<mat-toolbar style="height: 8%;width: 100%;display: flex;justify-content: space-between;align-items: center;flex-direction: row;">
+
+    <mat-toolbar-row style="width: 64px;height: 64px;">
+        <mat-icon style="font-size:32px;cursor: pointer;" (click)="onSidebarToggled()">menu</mat-icon>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row style="display: flex;justify-content: center;">
+
+        <button mat-button color="{{selectedOption == 'home' ? 'primary' : '' }}" (click)="onMenuOptionClick('home')"> HOME </button>
+        <!--
+        <button mat-button color="{{selectedOption == 'myevents' ? 'primary' : '' }}" (click)="onMenuOptionClick('myevents')"> MY EVENTS </button>
+        <button mat-button color="{{selectedOption == 'profile' ? 'primary' : '' }}" (click)="onMenuOptionClick('profile')"> PROFILE </button>
+        -->
+
+    </mat-toolbar-row>
+
+    <mat-toolbar-row style="width: 64px;height: 64px;">
+        <mat-icon (click)="onLogoutClicked()" style="font-size:32px;cursor: pointer;">exit_to_app</mat-icon>
+    </mat-toolbar-row>
+
+</mat-toolbar>

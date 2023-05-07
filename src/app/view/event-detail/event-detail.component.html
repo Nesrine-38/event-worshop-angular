@@ -1,0 +1,15 @@
+<div style="display: flex;justify-content: center;flex-direction: column;align-items: center; height: 100%;width: 100%;">
+
+    <img style="width: 128px;height: 128px; border-radius: 64px;" src='http://localhost:5001/uploads/{{event.cover}}'>
+
+    <div style="display: flex;justify-content: center;flex-direction: column;width: 20%;">
+        <p style="font-size: 32px;margin-top: 32px;align-self: center;">{{ event?.title }}</p>
+        <p style="font-size: 24px;margin-top: 32px;align-self: center;">{{ event?.description }}</p>
+
+        <p style="font-size: 18px;margin-top: 32px;">Event date:</p>
+
+        <mat-calendar [selected]="this.sampleRange" [comparisonStart]="this.sampleRange.start" [comparisonEnd]="this.sampleRange.end"></mat-calendar>
+
+    </div>
+
+</div>

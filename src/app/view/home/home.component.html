@@ -1,0 +1,102 @@
+<app-header (selectedOptionOut)="getActiveOption($event)" (logoutAction)="logout()" (toggleSidebar)="toggleSidebar()"></app-header>
+
+<mat-drawer-container class="example-container" [hasBackdrop]="true">
+
+    <mat-drawer style="width: 20%;" #drawer [mode]="'push'">
+
+        <div style="margin-top:128px">
+            <mat-nav-list>
+                <mat-list-item style="padding-bottom: 16px;">
+                    <div style="width: 100%;height: 100%;display: flex;justify-content: space-between;align-items: center;">
+
+                        <mat-icon>
+                            done_all
+                        </mat-icon>
+
+                        <div style="justify-self: flex-start;width: 100%;align-self: flex-end;padding-left: 16px;">
+                            <p style="font-size: 22px;font-weight: bold;">
+                                Participations
+                            </p>
+                        </div>
+
+                        <mat-icon>
+                            navigate_next
+                        </mat-icon>
+
+                    </div>
+                </mat-list-item>
+                <mat-list-item style="padding-bottom: 16px;">
+
+                    <div style="width: 100%;height: 100%;display: flex;justify-content: space-between;align-items: center;">
+
+                        <mat-icon>
+                            event_available
+                        </mat-icon>
+
+                        <div style="justify-self: flex-start;width: 100%;align-self: flex-end;padding-left: 16px;">
+                            <p style="font-size: 22px;font-weight: bold;">
+                                Event requests
+                            </p>
+                        </div>
+
+                        <mat-icon>
+                            navigate_next
+                        </mat-icon>
+
+                    </div>
+
+                </mat-list-item>
+                <mat-list-item style="padding-bottom: 16px;">
+
+                    <div style="width: 100%;height: 100%;display: flex;justify-content: space-between;align-items: center;">
+
+                        <mat-icon>
+                            people
+                        </mat-icon>
+
+                        <div style="justify-self: flex-start;width: 100%;align-self: flex-end;padding-left: 16px;">
+                            <p style="font-size: 22px;font-weight: bold;">
+                                Accounts management
+                            </p>
+                        </div>
+
+                        <mat-icon>
+                            navigate_next
+                        </mat-icon>
+
+                    </div>
+
+                </mat-list-item>
+
+
+            </mat-nav-list>
+        </div>
+
+    </mat-drawer>
+
+    <ul>
+
+        <li>
+            option 1
+        </li>
+        <li>
+            option 2
+        </li>
+
+        <li>
+            option 3
+        </li>
+    </ul>
+
+    <mat-drawer-content>
+
+        <div *ngIf="tabOption == 'home'">
+            <app-allevents></app-allevents>
+        </div>
+
+    </mat-drawer-content>
+
+</mat-drawer-container>
+
+
+<app-footer></app-footer>

@@ -1,0 +1,29 @@
+<form [formGroup]="formBuilderGroup" (ngSubmit)="signIn()">
+
+    <div style="margin-top: 32px;display: flex;flex-direction: column;justify-content: space-evenly;align-items: flex-start;">
+        <div style="width: 100%;">
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Enter your email</mat-label>
+                <input formControlName="username" ngModel matInput>
+                <mat-error *ngIf="submitted && f.username.errors?.required">Email is required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div style="width: 100%;">
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Enter your password</mat-label>
+                <input formControlName="password" type="password" ngModel matInput>
+                <mat-error *ngIf="submitted && f.password.errors?.required">Password is required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div style="align-self: flex-end;width: 30%;">
+            <button *ngIf="!isLoading" mat-flat-button style="width: 100%;" color="primary">Login</button>
+            <div style="width: 100%;display: flex;justify-content: center;">
+                <mat-spinner diameter="30" *ngIf="isLoading"></mat-spinner>
+            </div>
+        </div>
+    </div>
+
+
+</form>

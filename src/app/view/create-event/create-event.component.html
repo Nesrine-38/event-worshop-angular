@@ -1,0 +1,84 @@
+<div style="display: flex;justify-content: center;align-items: center;height: 100%; ">
+
+    <form [formGroup]="formBuilderGroup" (ngSubmit)="createEvent()">
+
+        <div style="height: 30vh;width: 50vw; display: flex;flex-direction: column;justify-content: space-evenly;align-items: flex-start;">
+
+            <div style="width: 100%;margin-bottom: 32px;display: flex;justify-content:start;align-items:flex-start;">
+                <h2 style="margin-bottom: 16px;">Create new event</h2>
+            </div>
+
+            <div style="width: 100%;">
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label>Event title</mat-label>
+                    <input matInput formControlName="eventTitle" ngModel required>
+                    <mat-error *ngIf="f.eventTitle.errors?.required">Event title is required</mat-error>
+                </mat-form-field>
+
+            </div>
+
+
+            <div style="width: 100%;">
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label>Event description</mat-label>
+                    <textarea formControlName="eventDescription" ngModel matInput required></textarea>
+                    <mat-error *ngIf="f.eventDescription.errors?.required">Event description is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div style="display: flex; flex-direction: row; justify-content: flex-start; width: 100%;">
+                <div style="flex-grow: 1; margin-right: 20px;">
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-label>Event start date</mat-label>
+                        <div style="display: flex;">
+                            <input matInput readonly formControlName="eventStartDate" ngModel [matDatepicker]="pickerStartDate">
+                            <mat-datepicker-toggle matIconSuffix [for]="pickerStartDate"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerStartDate></mat-datepicker>
+                        </div>
+                        <mat-error *ngIf="submitted && f.eventStartDate.errors?.required">Event start date is required</mat-error>
+
+                    </mat-form-field>
+                </div>
+                <div style="flex-grow: 1;">
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-label>Event end date</mat-label>
+
+                        <div style="display: flex;">
+                            <input matInput readonly formControlName="eventEndDate" ngModel [matDatepicker]="pickerEndDate">
+                            <mat-datepicker-toggle matIconSuffix [for]="pickerEndDate"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerEndDate></mat-datepicker>
+                        </div>
+                        <mat-error *ngIf="submitted && f.eventEndDate.errors?.required">Event end date is required</mat-error>
+                        <mat-error *ngIf="submitted && f.eventEndDate.errors?.validDate">End date must be greater than start date</mat-error>
+
+                    </mat-form-field>
+
+                </div>
+
+            </div>
+
+            <div style="width: 100%;">
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label>Event address </mat-label>
+                    <input formControlName="eventAddress" ngModel matInput type="text">
+                    <mat-error *ngIf="submitted && f.eventAddress.errors?.required">Event address is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div style="width: 100%;margin-bottom: 32px;margin-top: 32px;">
+                <input type="file" id="fileUpload" name="fileUpload" (change)="onFileChange($event)" accept="image/*" />
+            </div>
+
+            <div style="align-self: flex-end;width: 30%;">
+
+                <button *ngIf="!isLoading" mat-flat-button style="width: 100%;" color="primary">Create</button>
+                
+                <div style="width: 100%;display: flex;justify-content: center;">
+                    <mat-spinner diameter="30" *ngIf="isLoading"></mat-spinner>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+</div>
